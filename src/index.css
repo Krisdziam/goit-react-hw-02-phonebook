@@ -8,10 +8,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(./img/zdaniya-goroda-parizha-i-vid-na-eyfelevu-bashnyu-oboi-2048x1536_26.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+ 
 }
 li{
   list-style: none;
