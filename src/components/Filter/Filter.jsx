@@ -1,9 +1,19 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class Filter extends Component {
-  render() {
-    return (
-      <div>Filter</div>
-    )
-  }
-}
+const Filter = ({ filter, filterState }) => {
+  return (
+    <>
+      <label>
+        Find contacts by name{' '}
+        <input
+          onChange={filterState}
+          name="filter"
+          type="text"
+          value={filter}
+        />{' '}
+      </label>
+    </>
+  );
+};
+
+export default Filter;

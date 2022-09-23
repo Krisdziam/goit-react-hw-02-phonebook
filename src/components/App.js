@@ -21,31 +21,45 @@ export class App extends Component {
     }));
   };
 
-formSubmitHandler=(data)=>{
-console.log(data);
-// const contact = {
-//   id: nanoid(),
-//   name:data.name,
-//   number: data.number,
-// }
+  formSubmitHandler = data => {
+    console.log(data);
+    // const contact = {
+    //   id: nanoid(),
+    //   name:data.name,
+    //   number: data.number,
+    // }
 
-this.setState(prevState =>({
-  contacts: [...prevState.contacts, { id: nanoid(), ...data }], 
-}))
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, { id: nanoid(), ...data }],
+    }));
+  };
 
-};
+
+  filterState = (e)=>{
+    const filter = e.target.value
+    this.setState({
+      filter:filter,
+    })
+  }
+filterContactsByName=()=>{
+  const{contacts, filter } = this.state;
+  const normalizeContacts = filter.toLowerCase()
+  return contacts.filter(contact =>contact.name.toLowerCase().includes(normalizeContacts))
+}
 
   render() {
-    const { contacts } = this.state;
+
+    const filteredContacts = this.filterContactsByName();
+
     return (
       <>
         <h2>Phonebook</h2>
-        <Form onSubmit={this.formSubmitHandler}/>
+        <Form onSubmit={this.formSubmitHandler}  />
         <ContactsList
-          contacts={contacts}
+          contacts={filteredContacts}
           onDeleteContact={this.deleteContact}
         />
-        <Filter />
+        <Filter filter={this.state.filter} filterState={this.filterState}/>
       </>
     );
   }
