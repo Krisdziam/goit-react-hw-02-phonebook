@@ -1,42 +1,51 @@
 import { nanoid } from 'nanoid';
 import React, { Component } from 'react';
+import ContactsList from './ContactsList/ContactsList';
+import Form from './Form/Form';
+import Filter from './Filter/Filter';
 
 export class App extends Component {
   state = {
-    contacts: [],
-    name: '',
+    contacts: [
+      { id: nanoid(), name: 'Rosie Simpson', number: '459-12-56' },
+      { id: nanoid(), name: 'Hermione Kline', number: '443-89-12' },
+      { id: nanoid(), name: 'Eden Clements', number: '645-17-79' },
+      { id: nanoid(), name: 'Annie Copeland', number: '227-91-26' },
+    ],
+    filter: '',
   };
-  nameId = nanoid();
 
-  handleInputChange = (e) => {
-    const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
-}
-  handleSubmit(e) {
-    e.preventDefault();
-    this.setState({
-      name: '',
-    })
-  }
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
+formSubmitHandler=(data)=>{
+console.log(data);
+// const contact = {
+//   id: nanoid(),
+//   name:data.name,
+//   number: data.number,
+// }
+
+this.setState(prevState =>({
+  contacts: [...prevState.contacts, { id: nanoid(), ...data }], 
+}))
+
+};
 
   render() {
+    const { contacts } = this.state;
     return (
       <>
         <h2>Phonebook</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label htmlFor={this.nameId}>Name</label>
-          <input
-            onChange={this.handleInputChange}
-            id={this.nameId}
-            type="text"
-            name="name"
-            value={this.state.name}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-          <button>Add Contact</button>
-        </form>
+        <Form onSubmit={this.formSubmitHandler}/>
+        <ContactsList
+          contacts={contacts}
+          onDeleteContact={this.deleteContact}
+        />
+        <Filter />
       </>
     );
   }
