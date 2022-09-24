@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/goit-react-hw-02-phonebook/static/css/main.4d786f63.css",
-    "main.js": "/goit-react-hw-02-phonebook/static/js/main.35146ef7.js",
-    "static/media/pug-dog-headphones-sitting-pink-sofa-using-silver-laptop-white-background-isolated-pug-laptop-pink-190980388.jpg": "/goit-react-hw-02-phonebook/static/media/pug-dog-headphones-sitting-pink-sofa-using-silver-laptop-white-background-isolated-pug-laptop-pink-190980388.65767a3f5a995f8a4ade.jpg",
+    "main.css": "/goit-react-hw-02-phonebook/static/css/main.decf99c4.css",
+    "main.js": "/goit-react-hw-02-phonebook/static/js/main.41c6457a.js",
+    "static/media/spacej.jpg": "/goit-react-hw-02-phonebook/static/media/spacej.d2fc90c952111aa45ffd.jpg",
     "index.html": "/goit-react-hw-02-phonebook/index.html",
-    "main.4d786f63.css.map": "/goit-react-hw-02-phonebook/static/css/main.4d786f63.css.map",
-    "main.35146ef7.js.map": "/goit-react-hw-02-phonebook/static/js/main.35146ef7.js.map"
+    "main.decf99c4.css.map": "/goit-react-hw-02-phonebook/static/css/main.decf99c4.css.map",
+    "main.41c6457a.js.map": "/goit-react-hw-02-phonebook/static/js/main.41c6457a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d786f63.css",
-    "static/js/main.35146ef7.js"
+    "static/css/main.decf99c4.css",
+    "static/js/main.41c6457a.js"
   ]
 }
