@@ -9,28 +9,37 @@ import styles from './App.module.css'
 
 export class App extends Component {
   state = {
-    contacts: [],
+    contacts: [{id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
+    {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
+    {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
+    {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},],
     filter: '',
   };
 
   deleteContact = contactId => {
+    const info = toast.info(`Contact deleted`, {
+      position: toast.POSITION.TOP_CENTER, autoClose: 2000
+    });
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
-    }));
+    }));return info
   };
 
   formSubmitHandler = data => {
     if (this.isDuplicate(data)) {
       // return alert(`${data.name} already exist`)
       const error = toast.error(`${data.name} already exist`, {
-        position: toast.POSITION.TOP_CENTER,
+        position: toast.POSITION.TOP_CENTER, autoClose: 2000
       });
       return error;
     }
-
+    const success = toast.success(`Contact added`, {
+      position: toast.POSITION.TOP_CENTER, autoClose: 2000
+    });
     this.setState(prevState => ({
       contacts: [...prevState.contacts, { id: nanoid(), ...data }],
     }));
+    return success
   };
 
   filterState = e => {
@@ -58,9 +67,9 @@ export class App extends Component {
 
     return (
       <div className={styles.container}>
-        <h1>Phonebook</h1>
+        <h1 className={styles.title}>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <h2>Contacts:</h2>
 
         
         <ContactsList
